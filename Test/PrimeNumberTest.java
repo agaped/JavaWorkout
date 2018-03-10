@@ -2,6 +2,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -56,6 +60,22 @@ class PrimeNumberTest {
         assertTrue(p.isPrimeUsingSquare(14) == false);
         assertTrue(p.isPrimeUsingSquare(18) == false);
         assertTrue(p.isPrimeUsingSquare(21) == false);
+    }
+
+    @Test
+    void checkExceptionThrownSitoOfErastotenes() {
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+            PrimeNumber.sieveOfEratosthenes(1);});
+    }
+
+    @Test
+    void checkIfCorrectListIsReturned(){
+        List<Integer> test=new ArrayList<Integer>();
+        test.add(2);
+
+        //for (int i = 0; i < test.size(); i++) {
+            assertEquals(test.get(0), PrimeNumber.sieveOfEratosthenes(2).get(0));
+        //}
     }
 
     @AfterEach
