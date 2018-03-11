@@ -2,6 +2,8 @@ package exercises;
 
 import exercises.Human;
 
+import java.util.Set;
+
 /**
  * Created by Agunia on 07.03.2018.
  */
@@ -61,5 +63,21 @@ public class Main {
 
         System.out.println("\n 0/0 = "+0+0.0); // 0/0 = 00.0
         System.out.println("\n 0/0 = "+0/0.0); // / ma wyższy priorytet niz +
+
+        System.out.println("\nMetody default interfejsy java 8");
+        Student ala=new Student();
+        System.out.println(ala.drive());
+        System.out.println(ala.walk());
+        System.out.println(ala.stop()); //2 takie same metody default z róznych interfejsów tzreba nadpisac
+
+        Car studentCar=new Student();
+        System.out.println(studentCar.stop()); //działa polimorfizm
     }
-}
+
+//    public class Example {
+//        public void print(Set<String> strSet)
+//        { }
+//        public void print(Set<Integer> intSet) //to nie jest metoda przeciązona!!
+//        { }
+    }
+

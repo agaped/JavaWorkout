@@ -1,10 +1,12 @@
 package com.linkedlist;
 
+import java.util.AbstractList;
+
 /**
  * Created by agaped on 10.03.2018.
  * Double linked list implementation
  */
-public class MyLinkedList<E> {
+public class MyLinkedList<E> extends AbstractList<E>{
 
     private ListNode<E> head;
     private ListNode<E> tail;
@@ -26,22 +28,26 @@ public class MyLinkedList<E> {
         return getNode(index).data;
     }
 
-    public void add(int index, E data){
-        ListNode<E> elementToAdd=new ListNode<>(data);
-        ListNode<E> elementToAppend;
-        if(this.size==0){
-            elementToAppend=tail;
-        }else{
-            elementToAppend=getNode(index);
+    public void add(int index, E data) {
+        if (data == null) {
+            throw new NullPointerException();
+        } else {
+            ListNode<E> elementToAdd = new ListNode<>(data);
+            ListNode<E> elementToAppend;
+            if (this.size == 0) {
+                elementToAppend = tail;
+            } else {
+                elementToAppend = getNode(index);
+            }
+
+            elementToAdd.prev = elementToAppend.prev;
+            elementToAdd.next = elementToAppend;
+
+            elementToAppend.prev.next = elementToAdd;
+            elementToAppend.prev = elementToAdd;
+
+            size++;
         }
-
-        elementToAdd.prev=elementToAppend.prev;
-        elementToAdd.next=elementToAppend;
-
-        elementToAppend.prev.next=elementToAdd;
-        elementToAppend.prev=elementToAdd;
-
-        size++;
     }
     private ListNode<E> getNode(int index){
         int i=0;
@@ -60,15 +66,29 @@ public class MyLinkedList<E> {
     }
 
     //replace element with given one
-    public void set(int index, E element){
+    public E set(int index, E element){
+        E toReturn=getNode(index).data;
         ListNode<E> elementToAppend=getNode(index);
         elementToAppend.data=element;
+        return toReturn;
     }
 
-    public void remove(int index){
+    public E remove(int index){
         ListNode<E> nodeToRemove=getNode(index);
         nodeToRemove.next.prev=nodeToRemove.prev;
         nodeToRemove.prev.next=nodeToRemove.next;
         this.size--;
+        return nodeToRemove.data;
+    }
+
+    public String toString(){
+        StringBuilder sb=new StringBuilder();
+        for (int i = 0; i <this.size ; i++) {
+            if(i>0 && i<this.size){
+                sb.append(", ");
+            }
+            sb.append(this.get(i).toString());
+        }
+        return sb.toString();
     }
 }
