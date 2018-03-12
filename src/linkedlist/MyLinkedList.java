@@ -1,4 +1,4 @@
-package com.linkedlist;
+package linkedlist;
 
 import java.util.AbstractList;
 

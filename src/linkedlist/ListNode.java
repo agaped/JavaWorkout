@@ -1,4 +1,4 @@
-package com.linkedlist;
+package linkedlist;
 
 /**
  * Created by agaped on 10.03.2018.

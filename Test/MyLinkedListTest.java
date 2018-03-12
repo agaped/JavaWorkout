@@ -1,4 +1,4 @@
-import com.linkedlist.MyLinkedList;
+import linkedlist.MyLinkedList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -65,6 +65,10 @@ class MyLinkedListTest {
 
         Throwable exception = assertThrows(ArrayIndexOutOfBoundsException.class,
                 ()->{emptyList.add(2,"Dagna");} );
+
+        exception = assertThrows(NullPointerException.class,
+                ()->{emptyList.add(0,null);} );
+
     }
 
     @Test
