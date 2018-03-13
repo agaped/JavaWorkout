@@ -11,7 +11,7 @@ class FactorialTest {
     private Factorial f;
 
     @BeforeEach
-    void initialiaza(){
+    void setUp(){
         f=new Factorial();
     }
 

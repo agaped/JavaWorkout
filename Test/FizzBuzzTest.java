@@ -12,7 +12,7 @@ class FizzBuzzTest {
     private FizzBuzz fizzBuzz;
 
     @BeforeEach
-    void initialiaze(){
+    void setUp(){
         fizzBuzz=new FizzBuzz();
     }
 

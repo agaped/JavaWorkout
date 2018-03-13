@@ -16,7 +16,7 @@ class PrimeNumberTest {
     private PrimeNumber p;
 
     @BeforeEach
-    void initialize() {
+    void setUp() {
         p = new PrimeNumber();
     }
 

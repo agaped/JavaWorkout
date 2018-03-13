@@ -12,7 +12,7 @@ class FibonacciTest {
     private Fibonacci f;
 
     @BeforeEach
-    void initialize(){
+    void setUp(){
         f=new Fibonacci();
     }
     @Test
