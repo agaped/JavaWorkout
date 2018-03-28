@@ -3,6 +3,8 @@ package com.movies;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * Created by agaped on 26.03.2018.
@@ -68,32 +70,23 @@ public class UserInterface {
     }
 
     private void filterByRatingBetterThan(double rating) {
-        List<Movie> result = new ArrayList<>();
-        for (Movie m : this.tempList) {
-            if (m.getRating() > rating) {
-                result.add(m);
-            }
-        }
+        List<Movie> result=this.tempList.stream().filter(movie->movie.getRating()>rating)
+                            .collect(Collectors.toList());
+
         this.tempList = result;
     }
 
     private void filterByYearOfProduction(int year) {
-        List<Movie> result = new ArrayList<>();
-        for (Movie m : this.tempList) {
-            if (m.getYear() == year) {
-                result.add(m);
-            }
-        }
+        List<Movie> result=this.tempList.stream().filter(movie->movie.getYear()==year)
+                .collect(Collectors.toList());
+
         this.tempList = result;
     }
 
     private void filterByRatingCountMoreThan(int count) {
-        List<Movie> result = new ArrayList<>();
-        for (Movie m : this.tempList) {
-            if (m.getCount() > count) {
-                result.add(m);
-            }
-        }
+        List<Movie> result=this.tempList.stream().filter(movie->movie.getCount()>count)
+                .collect(Collectors.toList());
+
         this.tempList = result;
     }
 
