@@ -27,7 +27,11 @@ public class MovieList {
                 }else{
                     continue;
                 }
-                this.movie.setRating(Double.parseDouble(tab[2]));
+                if(tab[2].matches("[0-9]+.[0-9]*")){
+                    this.movie.setRating(Double.parseDouble(tab[2]));
+                }else{
+                    continue;
+                }
                 this.movie.setCount(Integer.parseInt(tab[3]));
                 this.movies.add(movie);
         }
